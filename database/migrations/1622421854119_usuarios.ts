@@ -10,7 +10,7 @@ export default class Usuarios extends BaseSchema {
       table.string('email',100).notNullable()
       table.string('senha',45).notNullable()
       table.text('foto')
-      table.boolean('admin').notNullable()
+      table.boolean('admin')
 
 
       table.timestamps(true)
