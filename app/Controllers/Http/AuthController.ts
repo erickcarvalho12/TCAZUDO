@@ -1,5 +1,6 @@
 import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
-import User from 'App/Models/Usuario'
+import Usuario from 'App/Models/Usuario'
+
 
 export default class AuthController {
   public async register({ view }: HttpContextContract) {
@@ -10,7 +11,7 @@ export default class AuthController {
     const data = request.only(['nome','email', 'senha','foto','admin'])
     
     try {
-      const user = await User.create(data)
+      const user = await Usuario.create(data)
       await auth.login(user, true)
     } catch (error) {
       session.flash('errors', 'Erro no registro. Verifique suas informações.')
@@ -24,8 +25,8 @@ export default class AuthController {
   }
 
   public async verify({ request, response, auth }: HttpContextContract) {
-    const data = request.only(['email', 'password', 'remember'])
-    await auth.attempt(data.email, data.password, data.remember === 'true')
+    const data = request.only(['email', 'passwaord'])
+    await auth.attempt(data.email, data.passwaord)
     response.redirect().toRoute('root')
   }
 
