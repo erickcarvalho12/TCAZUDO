@@ -1,5 +1,5 @@
 import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
-import User from 'App/Models/User'
+import User from 'App/Models/Usuario'
 
 export default class AuthController {
   public async register({ view }: HttpContextContract) {
@@ -7,7 +7,7 @@ export default class AuthController {
   }
 
   public async store({ request, response, auth, session }: HttpContextContract) {
-    const data = request.only(['name', 'email', 'password'])
+    const data = request.only(['nome','email', 'senha','foto','admin'])
     try {
       const user = await User.create(data)
       await auth.login(user, true)

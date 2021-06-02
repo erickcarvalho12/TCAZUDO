@@ -5,7 +5,12 @@ export default class Bilhetes extends BaseSchema {
 
   public async up () {
     this.schema.createTable(this.tableName, (table) => {
-      table.increments('id')
+      table.increments('id').primary
+      table.integer('numero').notNullable()
+      table.integer('rifa_id').unsigned().notNullable().references('id').inTable('rifas')
+      table.integer('usuario_id').unsigned().references('id').inTable('rifas')
+
+
       table.timestamps(true)
     })
   }

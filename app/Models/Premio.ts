@@ -1,12 +1,15 @@
 import { DateTime } from 'luxon'
 import { BaseModel, column } from '@ioc:Adonis/Lucid/Orm'
 
-export default class Bilhete extends BaseModel {
+export default class Premio extends BaseModel {
   @column({ isPrimary: true })
   public id: number
 
   @column()
-  public numero: number
+  public descricao: string
+
+  @column()
+  public colocacao: number
 
   @column()
   public rifaId: number

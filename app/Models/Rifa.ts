@@ -24,6 +24,12 @@ export default class Rifa extends BaseModel {
   public data_sorteio: DateTime
 
   @column()
+  public usuarioId: number
+
+  @column()
+  public tipoId: number
+
+  @column()
   public valor_bilhete: Float32Array
 
   @column.dateTime({ autoCreate: true })
