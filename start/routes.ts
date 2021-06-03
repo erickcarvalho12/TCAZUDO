@@ -1,7 +1,7 @@
 import Route from '@ioc:Adonis/Core/Route'
 
 Route.group(() => {
-  Route.resource('tasks', 'TasksController')
+  Route.resource('/novaRifa', 'RifasController')
   Route.get('/tasks/:id/done', 'TasksController.done').as('tasks.done')
 }).middleware('auth')
 
