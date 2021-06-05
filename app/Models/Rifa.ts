@@ -6,7 +6,7 @@ export default class Rifa extends BaseModel {
   public id: number
 
   @column()
-  public title: string
+  public titulo: string
 
   @column()
   public descricao: string
