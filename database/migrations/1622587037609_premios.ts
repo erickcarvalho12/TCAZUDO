@@ -10,6 +10,7 @@ export default class Premios extends BaseSchema {
       table.string('descricao',45).notNullable()
       table.integer('colocacao').notNullable()
       table.integer('rifa_id').unsigned().notNullable().references('id').inTable('rifas')
+      table.integer('bilhete_sorteado_id').unsigned().references('id').inTable('bilhetes')
 
       table.timestamps(true)
     })

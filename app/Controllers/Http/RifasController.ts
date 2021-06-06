@@ -1,14 +1,20 @@
+
 import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import Rifa from 'App/Models/Rifa'
 
-export default class AuthController {
+export default class RifasController {
   public async register({ view }: HttpContextContract) {
     return view.render('rifas/register')
   }
 
+  public async show({ view}: HttpContextContract) {
+    const rifas = await Rifa.all()
+    //console.log(rifas)
+    return view.render('rifas/show', {rifas})
+  }
 
   public async list({ response, session }: HttpContextContract) {
-    return response.redirect().toRoute('rifas.list')
+    return response.redirect().toRoute('rifas.list', {})
     //const data = request.only(['nome','email','password','foto','admin'])
     
     try {

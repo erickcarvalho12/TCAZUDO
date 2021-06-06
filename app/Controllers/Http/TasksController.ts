@@ -9,6 +9,7 @@ export default class TasksController {
 
   public async show({ params, view }: HttpContextContract) {
     const task = await Task.find(params.id)
+    
     return view.render('tasks/show', { task })
   }
 

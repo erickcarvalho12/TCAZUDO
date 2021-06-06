@@ -1,5 +1,7 @@
 import { DateTime } from 'luxon'
-import { BaseModel, column } from '@ioc:Adonis/Lucid/Orm'
+import { BaseModel, column ,hasMany,HasMany, hasOne,
+  HasOne,  } from '@ioc:Adonis/Lucid/Orm'
+import Rifa from './Rifa'
 
 export default class Tipo extends BaseModel {
   @column({ isPrimary: true })
@@ -22,4 +24,10 @@ export default class Tipo extends BaseModel {
 
   @column.dateTime({ autoCreate: true, autoUpdate: true })
   public updatedAt: DateTime
+
+  @hasMany(()=> Rifa)
+  public rifas: HasMany<typeof Rifa>
+
+  @hasOne(() => Rifa)
+  public rifa: HasOne <typeof Rifa>
 }

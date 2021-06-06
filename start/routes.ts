@@ -3,7 +3,7 @@ import Route from '@ioc:Adonis/Core/Route'
 Route.group(() => {
   Route.get('/novaRifa', 'RifasController.register').as('rifas.register')
   Route.post('/novaRifa', 'RifasController.store').as('rifas.store')
-  Route.get('/listaRifas', 'RifasController.list').as('rifas.list')
+  Route.get('/rifasShow', 'RifasController.show').as('rifas.show')
   Route.get('/novoTipo', 'TiposController.register').as('tipos.register')
   Route.post('/novoTipo', 'TiposController.store').as('tipos.store')
 }).middleware('auth')

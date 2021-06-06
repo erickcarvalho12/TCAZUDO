@@ -7,8 +7,7 @@ export default class TiposController {
   }
 
   public async store({ request, response }: HttpContextContract) {
-    const data = request.only(['descricao','numero_inicial','passo','quantidade_bilhetes','rifaId']);
-    data.rifaId=1;
+    const data = request.only(['descricao','numero_inicial','passo','quantidade_bilhetes']);
     await Tipo.create(data)
     response.redirect().toRoute('root')
   }
