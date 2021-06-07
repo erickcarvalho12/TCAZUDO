@@ -1,15 +1,16 @@
 
 import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import Rifa from 'App/Models/Rifa'
+import Tipo from 'App/Models/Tipo'
 
 export default class RifasController {
   public async register({ view }: HttpContextContract) {
-    return view.render('rifas/register')
+    const tipos = await Tipo.all()
+    return view.render('rifas/register',{tipos})
   }
 
   public async show({ view}: HttpContextContract) {
     const rifas = await Rifa.all()
-    //console.log(rifas)
     return view.render('rifas/show', {rifas})
   }
 

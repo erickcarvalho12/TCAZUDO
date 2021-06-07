@@ -4,10 +4,10 @@
   <ul>
     @each(rifa in rifas)
       <li>
+      <a href="{{ route('rifas.show', { id: rifa.id }) }}">
         <p>{{ rifa.titulo }}</p>
-        <a href="{{ route('rifas.show', { id: rifa.id }) }}">
-    
         
+
       </li>
     @endeach
   </ul>

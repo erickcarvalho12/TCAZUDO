@@ -6,6 +6,11 @@ export default class TiposController {
     return view.render('tipos/register')
   }
 
+  public async show({ view}: HttpContextContract) {
+    const tipos = await Tipo.all()
+    return view.render('tipos/show', {tipos})
+  }
+
   public async store({ request, response }: HttpContextContract) {
     const data = request.only(['descricao','numero_inicial','passo','quantidade_bilhetes']);
     await Tipo.create(data)

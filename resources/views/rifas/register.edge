@@ -18,14 +18,14 @@
             <input type="text" class="form-control" name="descricao" id="descricao" placeholder="rifa benificente para meu cachorro">
             <label for="descricao">Descrição</label>
           </div>
-          <div class="form-floating mb-1">
-            <input type="text" class="form-control" name="titulo" id="titulo" placeholder="Titulo" autofocus>
-            <label for="titulo">Titulo</label>
-          </div>
 
           <select class="form-select" aria-label="Default select example" name="typeId" required>
-            <option disabled selected>Escolha o tipo</option>
-            <option disabled selected>Escolha o tipo</option>
+            @each(tipo in tipos)
+              <option>
+                <p>{{ tipo.descricao }}</p>
+                leite
+              </option>
+             @endeach
           </select>
 
           <div class="form-floating mb-1">
