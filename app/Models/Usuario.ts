@@ -1,6 +1,6 @@
 import { DateTime } from 'luxon'
 import Hash from '@ioc:Adonis/Core/Hash'
-import { column, beforeSave, BaseModel,hasMany,HasMany, hasOne, HasOne } from '@ioc:Adonis/Lucid/Orm'
+import { column, beforeSave, BaseModel,hasMany,HasMany } from '@ioc:Adonis/Lucid/Orm'
 import Rifa from './Rifa'
 import Bilhete from './Bilhete'
 
@@ -38,8 +38,6 @@ export default class Usuario extends BaseModel {
   @hasMany(()=> Bilhete)
   public bilhetes: HasMany<typeof Bilhete>
 
-  @hasOne(() => Rifa)
-  public rifa: HasOne <typeof Rifa>
 
   @beforeSave()
   public static async hashPassword(usuario: Usuario) {

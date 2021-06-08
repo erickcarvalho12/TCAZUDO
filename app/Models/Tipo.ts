@@ -1,6 +1,5 @@
 import { DateTime } from 'luxon'
-import { BaseModel, column ,hasMany,HasMany, hasOne,
-  HasOne,  } from '@ioc:Adonis/Lucid/Orm'
+import { BaseModel, column ,hasMany,HasMany  } from '@ioc:Adonis/Lucid/Orm'
 import Rifa from './Rifa'
 
 export default class Tipo extends BaseModel {
@@ -11,13 +10,13 @@ export default class Tipo extends BaseModel {
   public descricao: string
 
   @column()
-  public numero_inicial: number
+  public numeroInicial: number
 
   @column()
   public passo: number
 
   @column()
-  public quantidade_bilhetes: number
+  public quantidadeBilhetes: number
 
   @column.dateTime({ autoCreate: true })
   public createdAt: DateTime
@@ -28,6 +27,4 @@ export default class Tipo extends BaseModel {
   @hasMany(()=> Rifa)
   public rifas: HasMany<typeof Rifa>
 
-  @hasOne(() => Rifa)
-  public rifa: HasOne <typeof Rifa>
 }

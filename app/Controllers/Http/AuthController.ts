@@ -9,9 +9,10 @@ export default class AuthController {
 
   public async store({ request, response, auth, session }: HttpContextContract) {
     const data = request.only(['nome','email','password','foto','admin'])
-    
+    if(!data.admin){
+      data.admin = false
+    }
     try {
-      data.admin=false;
       data.foto= 1;
       const user = await Usuario.create(data)
       await auth.login(user,true)
@@ -43,6 +44,6 @@ export default class AuthController {
   }
 
   public async about({ view}: HttpContextContract) {
-    return view.render('about/about', {  })
+    return view.render('about/about')
   }
 }

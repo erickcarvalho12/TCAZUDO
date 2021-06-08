@@ -19,11 +19,10 @@
             <label for="descricao">Descrição</label>
           </div>
 
-          <select class="form-select" aria-label="Default select example" name="typeId" required>
+          <select class="form-select" aria-label="Default select example" name="tipo_id" required>
             @each(tipo in tipos)
-              <option>
+              <option value="{{tipo.id}}">
                 <p>{{ tipo.descricao }}</p>
-                leite
               </option>
              @endeach
           </select>
@@ -42,15 +41,17 @@
             <input type="datetime-local" class="form-control" name="data_fim_venda" id="data_fim_venda" placeholder="20/12/2021">
             <label for="data_fim_venda">Data de Fim das Vendas</label>
           </div>
+          
+          
 
           <div class="form-floating mb-1">
             <input type="number" class="form-control" name="valor_bilhete" id="valor_bilhete" placeholder="5,00">
             <label for="valor_bilhete">Valor do Bilhete</label>
           </div>
 
-
-          <button class="w-100 btn btn-lg btn-primary" type="submit">Registrar</button>
+          <button class="w-100 btn btn-lg btn-primary" type="submit">Prosseguir</button>
         </form>
+
       </main>
     </div>
   </div>

@@ -1,0 +1,22 @@
+@layout('layout/app')
+@section('content')
+
+
+  <ul class="list-group">
+    <form action="{{ route('premios.store') }}" method="post">
+
+        @each(premio in premios)
+            <option value="{{premio.id}}">
+                
+            </option>
+         @endeach
+            
+        <div class="form-floating mb-1">
+          <input type="text" class="form-control" name="descricao" id="descricao" placeholder="Bicicleta">
+          <label for="descricao">Premios</label>
+        </div>
+
+        <button class="w-100 btn btn-lg btn-primary" type="submit">adicionar Premio</button>
+      </form>
+  </ul>
+@endsection
