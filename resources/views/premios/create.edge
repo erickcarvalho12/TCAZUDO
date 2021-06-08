@@ -3,13 +3,8 @@
 
 
   <ul class="list-group">
-    <form action="{{ route('premios.store') }}" method="post">
+    <form action="{{ route('premios.store', {rifa_id: rifa_id}) }}" method="post">
 
-        @each(premio in premios)
-            <option value="{{premio.id}}">
-                
-            </option>
-         @endeach
             
         <div class="form-floating mb-1">
           <input type="text" class="form-control" name="descricao" id="descricao" placeholder="Bicicleta">
@@ -17,6 +12,10 @@
         </div>
 
         <button class="w-100 btn btn-lg btn-primary" type="submit">adicionar Premio</button>
+        <a href="{{ route('root') }}">Finalizar {{colocacao}}</a>
+        
       </form>
+      
   </ul>
+  
 @endsection

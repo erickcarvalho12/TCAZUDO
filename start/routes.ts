@@ -7,8 +7,8 @@ Route.group(() => {
   Route.get('/novoTipo', 'TiposController.register').as('tipos.register')
   Route.post('/novoTipo', 'TiposController.store').as('tipos.store')
 
-  Route.get('/novoPremio', 'PremiosController.index').as('premios.index')
-  Route.post('/novoPremio', 'PremiosController.store').as('premios.store')
+  Route.get('/rifas/:rifa_id/premios/create', 'PremiosController.create').as('premios.create')
+  Route.post('/rifas/:rifa_id/premios', 'PremiosController.store').as('premios.store')
 
   Route.get('/rifasShow', 'RifasController.show').as('rifas.show')
 

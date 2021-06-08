@@ -1,11 +1,13 @@
 @import '~bootstrap/scss/bootstrap';
 
+
 .page-body {
   margin-top: 20px;
 }
 
 body {
   background-color: dimgrey;
+  
 }
 
 p{
@@ -14,4 +16,9 @@ p{
 
 .btn-space {
   margin-left: 8px;
+}
+
+.body-home {
+  background-image: url(../image/Tiger800.jpg);
+  
 }

@@ -1,5 +1,5 @@
 import { DateTime } from 'luxon'
-import { BaseModel, belongsTo, column, BelongsTo, hasMany,HasMany, hasOne,HasOne} from '@ioc:Adonis/Lucid/Orm'
+import { BaseModel, belongsTo, column, BelongsTo, hasOne,HasOne} from '@ioc:Adonis/Lucid/Orm'
 import Rifa from './Rifa'
 import Premio from './Premio'
 import Usuario from './Usuario'
@@ -26,12 +26,11 @@ export default class Bilhete extends BaseModel {
   @belongsTo(()=> Rifa)
   public rifa: BelongsTo<typeof Rifa>
 
-  @hasOne(() => Usuario)
-  public usuario: HasOne<typeof Usuario>
-
-  @hasMany(()=> Premio)
-  public primeios: HasMany<typeof Premio>
-
+  @belongsTo(()=> Usuario)
+  public usuario: BelongsTo<typeof Usuario>
   
-  
+  @hasOne(()=> Premio)
+  public premio: HasOne<typeof Premio>
+
+
 }
