@@ -1,0 +1,19 @@
+@layout('layout/app')
+@section('content')
+
+  <ul class="list-group">
+    @each(rifa in rifas)
+      <li class="list-group-item list-group-item-light d-flex justify-content-between">
+      <div class="title">
+      <a class="negrito">Nome: </a> {{ rifa.titulo }}  
+      <a class="negrito">Descrição: </a> {{ rifa.descricao }}
+    </div>  
+      <div class="d-flex justify-content-between">
+        <a href="{{ route('rifas.show', { rifa_id: rifa.id }) }} " class ="btn btn-outline-primary btn-space"> ViSualizar </a>
+       <button href="{{ route('rifas.list', { rifa_id: rifa.id }) }} " class ="btn btn-outline-primary btn-space"> COMPRAR </button>
+ 
+    </div>
+      </li>
+    @endeach
+  </ul>
+@endsection

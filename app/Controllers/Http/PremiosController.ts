@@ -1,11 +1,7 @@
 import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 
 export default class PremiosController {
-  public async create({ view, params }: HttpContextContract) {
-    return view.render('premios/create', { rifa_id: params.rifa_id })
-  }
-
-  public async store({ request, response, params, auth }: HttpContextContract) {
+  public async create({ view, params, auth }: HttpContextContract) {
     const rifa = await auth
       .user!!.related('rifas')
       .query()
@@ -16,8 +12,26 @@ export default class PremiosController {
         'max(`colocacao`)'
       ] || 0) + 1
 
-    await rifa.related('premios').create({ descricao: request.input('descricao'), colocacao })
+    return view.render('premios/create', { rifa_id: params.rifa_id, colocacao })
+  }
 
+  public async store({ request, response, params, auth }: HttpContextContract) {
+
+    const rifa = await auth
+      .user!!.related('rifas')
+      .query()
+      .where('rifas.id', params.rifa_id)
+      .firstOrFail()
+
+    console.log(rifa.id);
+    
+    const colocacao =
+      ((await rifa.related('premios').query().max('colocacao').first())?.$extras[
+        'max(`colocacao`)'
+      ] || 0) + 1
+
+    await rifa.related('premios').create({ descricao: request.input('descricao'), colocacao })
+    //console.log(colocacao)
     response.redirect().toRoute('/rifas/:rifa_id/premios/create', { rifa_id: params.rifa_id })
   }
 }

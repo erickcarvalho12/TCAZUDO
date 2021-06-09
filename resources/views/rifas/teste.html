@@ -1,47 +1,7 @@
-<div class="col-12">
-    @if(flashMessages.has('errors.typeId'))
-        <select class="form-select is-invalid" aria-label="Default select example" name="typeId" required>
-            <option disabled selected>Escolha o tipo</option>
-            @each(type in types)
-                <option 
-                value="{{ type.id }}"
-                @if(flashMessages.get('typeId') == type.id)
-                selected
-                @endif
-            data-bs-toggle="popover" 
-                title="Numeros de bilhetes: {{ type.numberOfTickets}}
-                Numero Inicial dos Bilhetes: {{ type.initialNumber }}
-                Numero de Passos: {{ type.step }}"
-                data-bs-content="a">
-                    {{ type.description }}    
-                </option>
-            @endeach
-        </select>
-        <div id="typeId" class="text-danger">
-            {{flashMessages.get('errors.typeId')}}
-        </div>
-but
-        <p></p>
-    @else
-        <select class="form-select" aria-label="Default select example" name="typeId" required>
-            <option disabled selected>Escolha o tipo</option>
-            @each(type in types)
-            <option 
-            value="{{ type.id }}"
-            @if(flashMessages.get('typeId') == type.id)
-            selected
-            @endif
-            data-bs-toggle="popover" 
-            title="Numeros de bilhetes: {{ type.numberOfTickets}}
-            Numero Inicial dos Bilhetes: {{ type.initialNumber }}
-            Numero de Passos: {{ type.step }}" 
-            data-bs-content="a">
-                {{ type.description }}    
-            </option>
-            @endeach
-        </select>
-        <div id="typeId" class="form-text text-color-1">
-            Este campo é obrigatório
-        </div>
-    @endif
-</div>
+const colocacao =
+((await rifa.related('premios').query().max('colocacao').first())?.$extras[
+  'max(`colocacao`)'
+] || 0) + 1
+
+
+<button href="{{ route('rifas.list', { id: rifa.id }) }} " class ="btn btn-outline-primary btn-space"> COMPRAR </button>

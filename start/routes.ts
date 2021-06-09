@@ -10,7 +10,8 @@ Route.group(() => {
   Route.get('/rifas/:rifa_id/premios/create', 'PremiosController.create').as('premios.create')
   Route.post('/rifas/:rifa_id/premios', 'PremiosController.store').as('premios.store')
 
-  Route.get('/rifasShow', 'RifasController.show').as('rifas.show')
+  Route.get('/rifaslist', 'RifasController.list').as('rifas.list')
+  Route.get('/rifas/:rifa_id/show', 'RifasController.show').as('rifas.show')
 
 }).middleware('auth')
 

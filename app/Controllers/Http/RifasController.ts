@@ -8,29 +8,19 @@ export default class RifasController {
     return view.render('rifas/register', { tipos })
   }
 
-  public async show({ view }: HttpContextContract) {
+  public async list({ view }: HttpContextContract) {
     const rifas = await Rifa.all()
     //const rifas = await auth.user?.related('rifas').query()
-    return view.render('rifas/show', { rifas })
+    return view.render('rifas/list', { rifas })
   }
 
-  public async list({ response, session }: HttpContextContract) {
-    return response.redirect().toRoute('rifas.list', {})
-    //const data = request.only(['nome','email','password','foto','admin'])
+  public async show({ view ,params}: HttpContextContract) {
+    const rifa = await Rifa.find(params.rifa_id)
 
-    try {
-      //data.admin=false;
-      //data.foto= 1;
-      //const user = await Usuario.create(data)
-      //await auth.login(user,true)
-    } catch (error) {
-      console.log(error)
-
-      session.flash('errors', 'Erro no registro. Verifique suas informações.')
-      //return response.redirect().toRoute('auth.register')
-    }
-    response.redirect().toRoute('root')
+    return view.render('rifas/show',{rifa})
   }
+
+
   public async store({ request, response, auth }: HttpContextContract) {
     const data = request.only([
       'titulo',

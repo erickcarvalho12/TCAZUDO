@@ -2,18 +2,10 @@
 @section('content')
 
   <ul class="list-group">
-    @each(rifa in rifas)
-      <li class="list-group-item list-group-item-light d-flex justify-content-between">
-      <div class="title">
-      <a href="{{ route('rifas.show', { id: rifa.id }) }}"></a> 
-      {{ rifa.titulo }}  
-    </div>  
-      <div class="d-flex justify-content-between">
-        <button href="{{ route('rifas.show', { id: rifa.id }) }} " class ="btn btn-outline-primary btn-space"> VISUALIZAR </button>
-        <button href="{{ route('rifas.show', { id: rifa.id }) }} " class ="btn btn-outline-primary btn-space"> COMPRAR </button>
- 
-    </div>
-      </li>
-    @endeach
+    
+    <a >Nome: </a> {{ rifa.titulo }}  
+    <a >Descrição: </a> {{ rifa.descricao }}
+    <a href="{{ route('root') }}">Voltar  {{colocacao}}</a>
+
   </ul>
 @endsection

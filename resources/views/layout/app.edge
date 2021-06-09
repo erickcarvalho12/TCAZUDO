@@ -35,9 +35,14 @@
                   </a>
     
                   <ul class="dropdown-menu" aria-labelledby="Menu">
-                   <li><a class="dropdown-item" href="{{ route('rifas.show') }}">Lista de rifas</a></li>
+                    
+                   <li><a class="dropdown-item" href="{{ route('rifas.list') }}">Lista de rifas</a></li>
                    <li><a class="dropdown-item" href="{{ route('rifas.register') }}">Nova Rifa</a></li>
-                   <li><a class="dropdown-item" href="{{ route('tipos.register') }}">Novo Tipo de Rifa</a></li>
+              
+                   @if(auth.user?.admin)
+                    <li><a class="dropdown-item" href="{{ route('tipos.register') }}">Novo Tipo de Rifa</a></li>
+                     
+                   @endif
                   </ul>
                 </div>
                 @endif

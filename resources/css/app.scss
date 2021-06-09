@@ -19,6 +19,65 @@ p{
 }
 
 .body-home {
-  background-image: url(../image/Tiger800.jpg);
-  
+
+  background-image: url(https://cdn.motor1.com/images/mgl/LwWLW/s1/vw-gol-gti-1992.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+ 
+}
+
+.link-home {
+    width: 300px;
+    height: 70px;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    margin: -70px 0 0 -170px;
+    text-align: center;
+    font-size: 1.3em;  
+    background: rgba($color: #000000, $alpha: 0.5);
+    color: whitesmoke;
+    padding: 1em;
+    border-radius: 0.5em;
+    
+    
+
+}
+
+.link-home a{
+    color: yellowgreen;
+    transition: 2s;
+    text-decoration: none;
+
+}
+
+.link-home a:hover{
+    color: white;
+    text-shadow: white;
+
+}
+
+.seta:before {
+  content: "";
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 10px;
+  width: 0; 
+  height: 0; 
+
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-left: 10px solid rgba($color: rgb(0, 0, 0), $alpha: 0.5);
+}
+
+.img-outra{
+  background-image: url(https://www.motonline.com.br/noticia/wp-content/uploads/2020/01/CB250F-Twister-1.jpg);
+
+}
+
+.negrito{
+  text-decoration: rgb(70, 67, 85);
+
 }
