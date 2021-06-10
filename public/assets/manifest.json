@@ -1,6 +1,4 @@
 {
   "assets/app.css": "http://localhost:8080/assets/app.css",
-  "assets/app.js": "http://localhost:8080/assets/app.js",
-  "assets/images/Tiger800.jpg": "http://localhost:8080/assets/images/Tiger800.e3b5b49f.jpg",
-  "assets/images/jetta.jpg": "http://localhost:8080/assets/images/jetta.b51faba7.jpg"
+  "assets/app.js": "http://localhost:8080/assets/app.js"
 }

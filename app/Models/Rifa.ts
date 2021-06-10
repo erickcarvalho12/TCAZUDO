@@ -17,16 +17,16 @@ export default class Rifa extends BaseModel {
   public descricao: string
 
   @column()
-  public data_provavel_sorteio: DateTime
+  public dataProvavelSorteio: DateTime
 
   @column()
-  public data_inicio_venda: DateTime
+  public dataInicioVenda: DateTime
 
   @column()
-  public data_fim_venda: DateTime
+  public dataFimVenda: DateTime
 
   @column()
-  public data_sorteio: DateTime
+  public dataSorteio: DateTime
 
   @column()
   public usuarioId: number
@@ -35,7 +35,7 @@ export default class Rifa extends BaseModel {
   public tipoId: number
 
   @column()
-  public valor_bilhete: Float32Array
+  public valorBilhete: number
 
   @column.dateTime({ autoCreate: true })
   public createdAt: DateTime

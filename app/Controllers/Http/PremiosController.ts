@@ -23,7 +23,6 @@ export default class PremiosController {
       .where('rifas.id', params.rifa_id)
       .firstOrFail()
 
-    console.log(rifa.id);
     
     const colocacao =
       ((await rifa.related('premios').query().max('colocacao').first())?.$extras[

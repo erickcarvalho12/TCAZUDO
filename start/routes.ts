@@ -13,6 +13,8 @@ Route.group(() => {
   Route.get('/rifaslist', 'RifasController.list').as('rifas.list')
   Route.get('/rifas/:rifa_id/show', 'RifasController.show').as('rifas.show')
 
+  Route.post('/bilhete/:rifa_id/store', 'BilhetesController.store').as('bilhete.store')
+
 }).middleware('auth')
 
 Route.get('/register', 'AuthController.register').as('auth.register')

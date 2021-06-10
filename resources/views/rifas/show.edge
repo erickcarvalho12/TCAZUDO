@@ -3,9 +3,20 @@
 
   <ul class="list-group">
     
-    <a >Nome: </a> {{ rifa.titulo }}  
-    <a >Descrição: </a> {{ rifa.descricao }}
-    <a href="{{ route('root') }}">Voltar  {{colocacao}}</a>
+    <a >Nome: {{ rifa.titulo }}  </a> 
+    <a >Descrição: {{ rifa.descricao }} </a>
+    <a >Valor: {{ rifa.valorBilhete }}</a> 
+    <a >dataProvavelSorteio: {{ rifa.dataProvavelSorteio }}</a> 
+    <a >dataInicioVenda: {{ rifa.dataInicioVenda }}</a> 
+    <a >dataFimVenda: {{ dataFimVenda }}</a> 
+    <a >Valor: {{ rifa.valorBilhete }}</a> 
+
+    @each(premio in premios)
+      <p>{{ premio.colocacao }}º premio</p>
+      <p>{{ premio.descricao }}</p>
+    @endeach
+
+    <a href="{{ route('root') }}">Voltar</a>
 
   </ul>
 @endsection
