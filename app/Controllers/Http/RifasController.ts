@@ -20,7 +20,6 @@ export default class RifasController {
     const premios = await Premio.query()
     .where('premios.rifa_id', params.rifa_id)
 
-    console.log(premios)
 
     return view.render('rifas/show',{rifa,premios})
   }

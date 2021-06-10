@@ -3,11 +3,10 @@
 export default class BilhetesController {
 
 
-    public async store({ request, response, params, auth }: HttpContextContract) {
+    public async store({ request, response, params, auth,view }: HttpContextContract) {
 
       
-        console.log( params.rifa_id)
-    //console.log(colocacao)
-    response.redirect().toRoute('home/index')
+    console.log('( ' ,params.rifa_id,') ' )
+    return view.render('home/index')
   }
 }

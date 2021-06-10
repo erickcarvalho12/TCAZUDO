@@ -13,21 +13,13 @@
 
         <button class="w-100 btn btn-lg btn-primary" type="submit">adicionar Premio</button>
         
-        
+        <p>{{ rifa_id }}</p>
         
       </form>
 
-      <form action="{{ route('bilhete.store') }}" method="post">
-
-        
-        @if(colocacao > 3)
-          <button class="w-100 btn btn-lg btn-primary" >Finzalizar</button>
-          <p   required value="{{rifa_id}}"></p>
-        @endif
-        
-        
-      </form>
-      
+      @if(colocacao > 3)
+        <a href="{{ route('bilhetes.store', { rifa_id: rifa_id }) }} " > Finalizar</a>
+      @endif
   </ul>
   
 @endsection
