@@ -1,14 +1,15 @@
 @layout('layout/app')
 @section('content')
 
+<container class="mostrar-rifa">
+
   <ul class="list-group">
     
     <a >Nome: {{ rifa.titulo }}  </a> 
     <a >Descrição: {{ rifa.descricao }} </a>
     <a >Valor: {{ rifa.valorBilhete }}</a> 
-    <a >dataProvavelSorteio: {{ rifa.dataProvavelSorteio }}</a> 
-    <a >dataInicioVenda: {{ rifa.dataInicioVenda }}</a> 
-    <a >dataFimVenda: {{ dataFimVenda }}</a> 
+    <a >Data do Sorteio: {{ rifa.dataProvavelSorteio }}</a> 
+    <a >Data fim das vendas: {{ rifa.dataFimVenda }}</a> 
     <a >Valor: {{ rifa.valorBilhete }}</a> 
 
     @each(premio in premios)
@@ -18,5 +19,6 @@
 
     <a href="{{ route('root') }}">Voltar</a>
 
+  </container>
   </ul>
 @endsection
