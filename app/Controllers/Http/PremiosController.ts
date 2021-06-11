@@ -7,10 +7,7 @@ export default class PremiosController {
       .query()
       .where('rifas.id', params.rifa_id)
       .firstOrFail()
-    const colocacao =
-      ((await rifa.related('premios').query().max('colocacao').first())?.$extras[
-        'max(`colocacao`)'
-      ] || 0) + 1
+      const colocacao = 1 + ((await rifa.related('premios').query().max('colocacao', 'colocacao').first())?.colocacao || 0)
 
     return view.render('premios/create', { rifa_id: params.rifa_id, colocacao })
   }
@@ -24,10 +21,7 @@ export default class PremiosController {
       .firstOrFail()
 
     
-    const colocacao =
-      ((await rifa.related('premios').query().max('colocacao').first())?.$extras[
-        'max(`colocacao`)'
-      ] || 0) + 1
+    const colocacao = 1 + ((await rifa.related('premios').query().max('colocacao', 'colocacao').first())?.colocacao || 0)
 
     await rifa.related('premios').create({ descricao: request.input('descricao'), colocacao })
     //console.log(colocacao)

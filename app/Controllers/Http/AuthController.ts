@@ -1,7 +1,6 @@
 import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import Usuario from 'App/Models/Usuario'
 
-
 export default class AuthController {
   public async register({ view }: HttpContextContract) {
     return view.render('auth/register')
