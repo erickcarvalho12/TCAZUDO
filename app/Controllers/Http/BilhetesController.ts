@@ -28,10 +28,12 @@ export default class BilhetesController {
     return view.render('home/index')
   }
 
-  public async edit({ params, view }: HttpContextContract) {
+  public async edit({ params, view ,auth}: HttpContextContract) {
     
-    const bilhete = (await Bilhete.find(params.bilhete_id))!!
     
-    const rifa = await bilhete.related('bilhetes').
+    await Bilhete.query().where('id', params.bilhete_id).update({ usuario_id: auth.user?.id })
+  
+
+    return view.render('home/index')   
   }
 }

@@ -25,7 +25,7 @@
     <ul class="list-group">
       @each(bilhete in bilhetes)
         <p>Bilhete : {{ bilhete.numero }}</p>
-          @if(!bilhete.usuarioId )
+          @if(bilhete.usuarioId )
             <a disabled="disabled">Comprado </a>         
           @else
             <a href="{{ route('bilhetes.edit', {  bilhete_id: bilhete.id }) }} ">Comprar </a>
