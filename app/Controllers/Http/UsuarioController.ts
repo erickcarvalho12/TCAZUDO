@@ -17,11 +17,13 @@ export default class UsuariosController {
         .where('bilhetes.rifa_id', params.rifa_id).where('bilhetes.usuario_id', auth.user!!.id)
 
         
-        let cont = 0;
+        let qtdBilheteComprado = 0;
+        let valorTodosBilhetesComprados = 0; 
         for (const bilhete of bilhetes) {
-           cont++;
+            
+            qtdBilheteComprado++;
         }
 
-        return view.render('usuario/show',{bilhetes,cont})
+        return view.render('usuario/show',{bilhetes,qtdBilheteComprado})
     }
 }
