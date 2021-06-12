@@ -44,4 +44,5 @@ export default class RifasController {
     //const rifa = Rifa.query().where('id',params.id)
     response.redirect().toRoute('premios.create', { rifa_id: rifa.id })
   }
+
 }

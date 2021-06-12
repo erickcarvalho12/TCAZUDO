@@ -1,7 +1,0 @@
-const colocacao =
-((await rifa.related('premios').query().max('colocacao').first())?.$extras[
-  'max(`colocacao`)'
-] || 0) + 1
-
-
-<button href="{{ route('rifas.list', { id: rifa.id }) }} " class ="btn btn-outline-primary btn-space"> COMPRAR </button>

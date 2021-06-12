@@ -61,6 +61,7 @@
                   {{ auth.user?.nome }}
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="{{ route('usuario.status') }}">Status</a></li>
                   <li><a class="dropdown-item" href="{{ route('auth.logout') }}">Sair</a></li>
                 </ul>
               </li>

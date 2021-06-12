@@ -16,15 +16,15 @@
       <p>{{ premio.descricao }}</p>
     @endeach
  
-    <a href="{{ route('root') }}" class = "btn btn-outline-dark">Voltar</a>
+    <a href="{{ route('rifas.list') }}" class = "btn btn-outline-dark">Voltar</a>
   </ul>
 </div>
 
 <div class="mostar-bilhete">
     
-    <ul class="list-group">
+    <ul class="pagination">
       @each(bilhete in bilhetes)
-        <p>Bilhete : {{ bilhete.numero }}</p>
+        <li class="page-item">Bilhete : {{ bilhete.numero }}</li>
           @if(bilhete.usuarioId )
             <a disabled="disabled">Comprado </a>         
           @else

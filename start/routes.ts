@@ -17,6 +17,10 @@ Route.group(() => {
 
   Route.get('/bilhetes/:bilhete_id/edit', 'BilhetesController.edit').as('bilhetes.edit')
 
+
+  Route.get('/usuario/status', 'UsuarioController.status').as('usuario.status')
+  Route.get('/usuario/status/:rifa_id/show', 'UsuarioController.show').as('usuario.status.show')
+
 }).middleware('auth')
 
 Route.get('/register', 'AuthController.register').as('auth.register')

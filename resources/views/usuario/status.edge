@@ -1,0 +1,14 @@
+@layout('layout/app')
+
+@section('content')
+  <h1></h1>
+  <ul>
+    <p>Rifas Que eu Participo</p>
+    @each(rifa in rifas)
+    <li>
+      <a>{{ rifa.titulo }} </a>
+      <a href="{{ route('usuario.status.show', { rifa_id: rifa.id }) }}"> Mostrar mais</a>
+    </li>
+  @endeach
+  </ul>
+@endsection
