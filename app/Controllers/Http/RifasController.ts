@@ -1,4 +1,5 @@
 import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
+import Bilhete from 'App/Models/Bilhete'
 import Premio from 'App/Models/Premio'
 import Rifa from 'App/Models/Rifa'
 import Tipo from 'App/Models/Tipo'
@@ -17,11 +18,15 @@ export default class RifasController {
 
   public async show({ view ,params}: HttpContextContract) {
     const rifa = await Rifa.find(params.rifa_id)
+
     const premios = await Premio.query()
     .where('premios.rifa_id', params.rifa_id)
 
+    const bilhetes = await Bilhete.query()
+    .where('bilhetes.rifa_id', params.rifa_id)
+    
 
-    return view.render('rifas/show',{rifa,premios})
+    return view.render('rifas/show',{rifa,premios,bilhetes})
   }
 
 

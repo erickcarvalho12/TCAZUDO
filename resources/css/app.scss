@@ -23,7 +23,7 @@ p{
   background-image: url(https://cdn.motor1.com/images/mgl/LwWLW/s1/vw-gol-gti-1992.jpg);
   background-repeat: no-repeat;
   background-size: cover;
- 
+
 }
 
 .link-home {
@@ -84,7 +84,23 @@ p{
 
 .mostrar-rifa{
 
-  background-color: rgba($color: #db6b0e, $alpha: 0.5);
+  background-color: rgba($color: rgb(243, 122, 41), $alpha: 0.75);
+  padding: 1em;
+  border-radius: 0.5em;
+  font-family: DejaVu Sans Mono, monospace ;
+  width: max-content;  
+  float: left;
+
+}
+
+.mostar-bilhete{
+  
+  background-color: rgba($color: rgb(243, 122, 41), $alpha: 0.75);
+  padding: 1em;
+  border-radius: 0.5em;
+  font-family: DejaVu Sans Mono, monospace ;
+  width: 40%;  
+  float: right;
 
 
 }

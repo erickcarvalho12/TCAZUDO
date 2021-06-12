@@ -1,24 +1,42 @@
 @layout('layout/app')
 @section('content')
 
-<container class="mostrar-rifa">
+<div class="mostrar-rifa">
 
   <ul class="list-group">
     
-    <a >Nome: {{ rifa.titulo }}  </a> 
+    <a >Nome:  {{ rifa.titulo }}</a>
     <a >Descrição: {{ rifa.descricao }} </a>
-    <a >Valor: {{ rifa.valorBilhete }}</a> 
+    <a >Valor: R${{ rifa.valorBilhete }}</a> 
     <a >Data do Sorteio: {{ rifa.dataProvavelSorteio }}</a> 
     <a >Data fim das vendas: {{ rifa.dataFimVenda }}</a> 
-    <a >Valor: {{ rifa.valorBilhete }}</a> 
 
     @each(premio in premios)
       <p>{{ premio.colocacao }}º premio</p>
       <p>{{ premio.descricao }}</p>
     @endeach
-
-    <a href="{{ route('root') }}">Voltar</a>
-
-  </container>
+ 
+    <a href="{{ route('root') }}" class = "btn btn-outline-dark">Voltar</a>
   </ul>
+</div>
+
+<div class="mostar-bilhete">
+    
+    <ul class="list-group">
+      @each(bilhete in bilhetes)
+        <p>Bilhete : {{ bilhete.numero }}</p>
+          @if(!bilhete.usuarioId )
+            <a disabled="disabled">Comprado </a>         
+          @else
+            <a href="{{ route('bilhetes.edit', {  bilhete_id: bilhete.id }) }} ">Comprar </a>
+          
+          @endif
+        
+        
+      @endeach
+    </ul>
+
+
+</div>
+  
 @endsection

@@ -11,8 +11,8 @@ export default class DatabaseSeederSeeder extends BaseSeeder {
       passo: 1, 
       quantidadeBilhetes: 1000 })
     const user = await Usuario.create({
-      nome: 'Default', 
-      email:'default@csa.com', 
+      nome: 'tca', 
+      email:'tca@tca.com', 
       password: 'teste', 
       admin: true})
     
@@ -33,6 +33,20 @@ export default class DatabaseSeederSeeder extends BaseSeeder {
       colocacao: 1,
     }) 
 
+    await rifa.related('bilhetes').createMany([
+      { usuarioId: 1, numero: 1 },
+      { usuarioId: 1, numero: 2 },
+      { usuarioId: 1, numero: 3 },
+      { numero: 4 },
+      { numero: 5 },
+      { numero: 6 },
+      { numero: 7 },
+      { numero: 8 },
+      { numero: 9 },
+      { numero: 10 },
+      { numero: 11 },
+      { usuarioId: 1, numero: 12 },
+    ])
 
   }
 }
