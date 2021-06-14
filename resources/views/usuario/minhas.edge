@@ -9,8 +9,8 @@
       <a class="negrito">Nome: </a> {{ rifa.titulo }}  
       </div>  
       <div class="d-flex justify-content-between">
-        <a href="{{ route('rifas.show', { rifa_id: rifa.id , qs: { page:1 }}) }} " class ="btn btn-outline-primary btn-space"> VISUALIZAR</a>
-        <a href="{{ route('rifas.sortear', { rifa_id: rifa.id }) }}">Sortear</a>
+        <a href="{{ route('rifas.show', { rifa_id: rifa.id , qs: { page:1 }}) }} " class ="btn btn-outline-primary btn-space" style=""> VISUALIZAR</a>
+        <a class="btn btn-outline-dark"href="{{ route('rifas.sortear', { rifa_id: rifa.id }) }}">Sortear</a>
     </div>
    
       </li>

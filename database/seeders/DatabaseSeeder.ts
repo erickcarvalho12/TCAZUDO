@@ -18,7 +18,7 @@ export default class DatabaseSeederSeeder extends BaseSeeder {
     
     
     const rifa =  await tipo.related('rifas').create({
-      usuarioId: 0, 
+      usuarioId: 1, 
       titulo: 'GOL QUADRADO GTI',
       descricao: 'Sorteio de um Gol GTI ano 95, carro completo e sem detalhes',
       dataProvavelSorteio: DateTime.now(),
@@ -49,7 +49,7 @@ export default class DatabaseSeederSeeder extends BaseSeeder {
     ])
 
     const rifa2 =  await tipo.related('rifas').create({
-      usuarioId: 0, 
+      usuarioId: 1, 
       titulo: 'CB TWISTER 2020 - Special Edition',
       descricao: 'Sorteio de uma CB TWISTER - Special edition, moto semi-nova porém super conservada, IMPERDÍVEL!!!!!',
       dataProvavelSorteio: DateTime.now(),
@@ -80,7 +80,7 @@ export default class DatabaseSeederSeeder extends BaseSeeder {
     ])
 
     const rifa3 =  await tipo.related('rifas').create({
-      usuarioId: 0, 
+      usuarioId: 1, 
       titulo: 'PC Gamer',
       descricao: 'Sorteio de um computador gamer INTEL Core duos, intel HD graphics, 4GB ram ddr2, marca Positivo',
       dataProvavelSorteio: DateTime.now(),
@@ -111,7 +111,7 @@ export default class DatabaseSeederSeeder extends BaseSeeder {
     ])
 
     const rifa4=  await tipo.related('rifas').create({
-      usuarioId: 0, 
+      usuarioId: 1, 
       titulo: 'CD Elias Silva Coletânea de Sucessos',
       descricao: 'Sorteio de um CD mp3 do cantos Elias Silva, renomado cantor gospel',
       dataProvavelSorteio: DateTime.now(),
@@ -142,7 +142,7 @@ export default class DatabaseSeederSeeder extends BaseSeeder {
     ])
 
     const rifa5 =  await tipo.related('rifas').create({
-      usuarioId: 0, 
+      usuarioId: 1, 
       titulo: 'Camisa autografada Gianluigi Buffon',
       descricao: 'Camisa de goleiro da Juventus, autografada por um dos maiores arqueiros de todos os tempos',
       dataProvavelSorteio: DateTime.now(),
@@ -173,7 +173,7 @@ export default class DatabaseSeederSeeder extends BaseSeeder {
     ])
 
     const rifa6 =  await tipo.related('rifas').create({
-      usuarioId: 0, 
+      usuarioId: 1, 
       titulo: 'Triumph Tiger 800',
       descricao: 'Sorteio de uma Triumph Tiger 800, moto zero quilômetro perfeitinha, oportunidade unica',
       dataProvavelSorteio: DateTime.now(),

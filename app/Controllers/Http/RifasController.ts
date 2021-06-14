@@ -74,12 +74,34 @@ export default class RifasController {
       .where('rifas.id', params.rifa_id)
       .firstOrFail()
 
-      const numeroBilhetes = ((await rifa.related('bilhetes').query().max('numero', 'numero').first())?.numero )!!  
+      const tipo = await Tipo.find(rifa.tipoId) 
 
-      console.log('quantidade de bilhetes: ',numeroBilhetes)
-      const random = Math.floor(Math.random() * (numeroBilhetes - 1) + 1);
+      console.log('numero maximo:',tipo?.quantidadeBilhetes,' ') 
 
-      console.log('numero random: ',random)
+      const  bilhetes = await Bilhete
+      .query()
+      .where('bilhetes.rifa_id', rifa.id)
+
+      let rifaComprada = false
+
+      do {
+        const idBilheteSorteado = Math.floor(Math.random() * (tipo!!.quantidadeBilhetes - 1) + 1)
+        console.log('id sorteado:',idBilheteSorteado,' ')
+        let cont= 0;
+        for (const bilhete of bilhetes) {
+          cont++
+          if(cont === idBilheteSorteado  ){
+           console.log('numero do bilhete sorteado: ',bilhete.numero)
+            console.log('id do bilhete sorteado: ',bilhete.id)
+            if( bilhete.usuarioId){
+              rifaComprada = true
+              console.log('o id do vencedor é:',bilhete.usuarioId)
+            }
+          }
+        }
+        console.log(cont)
+      } while(!rifaComprada);
+
     response.redirect().toRoute('root')
   }
 
