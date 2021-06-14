@@ -3,7 +3,8 @@ import Rifa from 'App/Models/Rifa'
 import Tipo from 'App/Models/Tipo'
 import Bilhete from 'App/Models/Bilhete'
 
-export default class BilhetesController {
+export default class BilhetesController {    
+
   public async store({ params, view }: HttpContextContract) {
     const rifa = (await Rifa.find(params.rifa_id))!!
 
@@ -28,12 +29,13 @@ export default class BilhetesController {
     return view.render('home/index')
   }
 
-  public async edit({ params, view ,auth}: HttpContextContract) {
-    
+  public async edit({ params ,auth, response}: HttpContextContract) {
+    const bilhete = await Bilhete.find(params.bilhete_id)
     
     await Bilhete.query().where('id', params.bilhete_id).update({ usuario_id: auth.user?.id })
-  
-
-    return view.render('home/index')   
+    
+    
+    response.redirect().toRoute('rifas.show', { rifa_id: bilhete!!.rifaId , qs: { page:1 }})  
+    
   }
 }

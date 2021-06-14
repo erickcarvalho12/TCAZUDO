@@ -1,14 +1,20 @@
 @layout('layout/app')
 
 @section('content')
-  <h1></h1>
-  <ul>
-    <p>Rifas Que eu Participo</p>
-    @each(rifa in rifas)
-    <li>
-      <a>{{ rifa.titulo }} </a>
-      <a href="{{ route('usuario.status.show', { rifa_id: rifa.id }) }}"> Mostrar mais</a>
-    </li>
-  @endeach
-  </ul>
+
+    <div class="alert alert-light" role="alert">
+      <h1> Rifas Que eu Participo:</h1> 
+        @each(rifa in rifas)
+        
+          <div class="alert alert-light" role="alert">
+          
+            <h2><a>{{ rifa.titulo }}</a> 
+                <a href="{{ route('usuario.status.show', { rifa_id: rifa.id }) }}" class ="btn btn-outline-dark btn-lg btn-space">Mostrar mais</a>
+            </h2>
+          </div>
+        @endeach
+        <a href="{{ route('rifas.list') }}" class = "btn btn-danger">Voltar</a>
+      </div> 
+
+
 @endsection

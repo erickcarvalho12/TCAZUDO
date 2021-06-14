@@ -1,10 +1,9 @@
 import { DateTime } from 'luxon'
-import { BaseModel, belongsTo, column, BelongsTo, hasMany,HasMany } from '@ioc:Adonis/Lucid/Orm'
+import { BaseModel, belongsTo, column, BelongsTo, hasMany, HasMany } from '@ioc:Adonis/Lucid/Orm'
 import Usuario from './Usuario'
 import Tipo from './Tipo'
 import Premio from './Premio'
 import Bilhete from './Bilhete'
-
 
 export default class Rifa extends BaseModel {
   @column({ isPrimary: true })
@@ -16,16 +15,16 @@ export default class Rifa extends BaseModel {
   @column()
   public descricao: string
 
-  @column()
+  @column.dateTime()
   public dataProvavelSorteio: DateTime
 
-  @column()
+  @column.dateTime()
   public dataInicioVenda: DateTime
 
-  @column()
+  @column.dateTime()
   public dataFimVenda: DateTime
 
-  @column()
+  @column.dateTime()
   public dataSorteio: DateTime
 
   @column()
@@ -43,17 +42,15 @@ export default class Rifa extends BaseModel {
   @column.dateTime({ autoCreate: true, autoUpdate: true })
   public updatedAt: DateTime
 
-  @belongsTo(()=> Usuario)
+  @belongsTo(() => Usuario)
   public usuario: BelongsTo<typeof Usuario>
 
-  @belongsTo(()=> Tipo)
+  @belongsTo(() => Tipo)
   public tipo: BelongsTo<typeof Tipo>
 
-  @hasMany(()=> Premio)
+  @hasMany(() => Premio)
   public premios: HasMany<typeof Premio>
 
-  @hasMany(()=> Bilhete)
+  @hasMany(() => Bilhete)
   public bilhetes: HasMany<typeof Bilhete>
-
-  
 }

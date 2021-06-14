@@ -24,7 +24,7 @@ export default class PremiosController {
     const colocacao = 1 + ((await rifa.related('premios').query().max('colocacao', 'colocacao').first())?.colocacao || 0)
 
     await rifa.related('premios').create({ descricao: request.input('descricao'), colocacao })
-    //console.log(colocacao)
+    
     response.redirect().toRoute('/rifas/:rifa_id/premios/create', { rifa_id: params.rifa_id })
   }
 }

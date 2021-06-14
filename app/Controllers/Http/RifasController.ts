@@ -3,6 +3,8 @@ import Bilhete from 'App/Models/Bilhete'
 import Premio from 'App/Models/Premio'
 import Rifa from 'App/Models/Rifa'
 import Tipo from 'App/Models/Tipo'
+import { DateTime } from 'luxon'
+//import Usuario from 'App/Models/Usuario'
 
 export default class RifasController {
   public async register({ view }: HttpContextContract) {
@@ -16,17 +18,37 @@ export default class RifasController {
     return view.render('rifas/list', { rifas })
   }
 
-  public async show({ view ,params}: HttpContextContract) {
+  public async show({ view ,params, request}: HttpContextContract) {
+    let page = request.qs().page
+
     const rifa = await Rifa.find(params.rifa_id)
 
     const premios = await Premio.query()
     .where('premios.rifa_id', params.rifa_id)
 
-    const bilhetes = await Bilhete.query()
-    .where('bilhetes.rifa_id', params.rifa_id)
-    
+    const bilhetes = await this.loadNextPage(rifa, request, page)
+    const bilhetesTamanho =  await Tipo.query()
+    .where('tipos.id', rifa!!.tipoId).firstOrFail()
 
-    return view.render('rifas/show',{rifa,premios,bilhetes})
+    
+    let vencida = true;
+    
+    
+    if(rifa!!.dataFimVenda > DateTime.now()){
+       vencida = false;
+    }
+    console.log(vencida)
+    const max = Math.ceil(bilhetesTamanho.quantidadeBilhetes / 100)
+
+    return view.render('rifas/show',{rifa,premios,bilhetes, page,max,vencida})
+  }
+
+ 
+
+  private async loadNextPage(rifa, request, page){
+   
+    return await rifa.related('bilhetes').query().forPage(request.input('page', page), 100)
+
   }
 
 
@@ -41,8 +63,24 @@ export default class RifasController {
       'tipo_id',
     ])
     const rifa = await auth.user!!.related('rifas').create(data)
-    //const rifa = Rifa.query().where('id',params.id)
     response.redirect().toRoute('premios.create', { rifa_id: rifa.id })
+  }
+
+  public async sortear({ request, response, auth,view ,params }: HttpContextContract) {
+
+    const rifa = await auth
+      .user!!.related('rifas')
+      .query()
+      .where('rifas.id', params.rifa_id)
+      .firstOrFail()
+
+      const numeroBilhetes = ((await rifa.related('bilhetes').query().max('numero', 'numero').first())?.numero )!!  
+
+      console.log('quantidade de bilhetes: ',numeroBilhetes)
+      const random = Math.floor(Math.random() * (numeroBilhetes - 1) + 1);
+
+      console.log('numero random: ',random)
+    response.redirect().toRoute('root')
   }
 
 }

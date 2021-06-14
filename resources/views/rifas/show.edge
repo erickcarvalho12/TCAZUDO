@@ -10,30 +10,61 @@
     <a >Valor: R${{ rifa.valorBilhete }}</a> 
     <a >Data do Sorteio: {{ rifa.dataProvavelSorteio }}</a> 
     <a >Data fim das vendas: {{ rifa.dataFimVenda }}</a> 
-
+     
     @each(premio in premios)
       <p>{{ premio.colocacao }}º premio</p>
       <p>{{ premio.descricao }}</p>
     @endeach
- 
-    <a href="{{ route('rifas.list') }}" class = "btn btn-outline-dark">Voltar</a>
+      
+    <a href="{{ route('rifas.list') }}" class = "btn btn-danger">Voltar</a>
   </ul>
 </div>
 
 <div class="mostar-bilhete">
     
-    <ul class="pagination">
+    <ul class="paginacao">
+
       @each(bilhete in bilhetes)
-        <li class="page-item">Bilhete : {{ bilhete.numero }}</li>
-          @if(bilhete.usuarioId )
-            <a disabled="disabled">Comprado </a>         
-          @else
-            <a href="{{ route('bilhetes.edit', {  bilhete_id: bilhete.id }) }} ">Comprar </a>
-          
+          <li class="paginacao-item  ">
+          Bilhete : {{ bilhete.numero }}
+          @if(!vencida)
+            @if(bilhete.usuarioId )
+              <a class="btn btn-primary disabled" >Comprado </a>         
+            @else
+              <a class="btn btn-outline-primary" href={{ route('bilhetes.edit', {  bilhete_id: bilhete.id }) }} >Comprar </a>
+            @endif
+            @else 
+            <a class="btn btn-primary disabled" >Rifa Vencida </a> 
           @endif
-        
-        
+          
+        </li>   
+
       @endeach
+
+    </ul>
+
+
+      @if(page > 1)
+         
+       <a class="btn btn-outline-dark" href={{ route('rifas.show',{rifa_id:rifa.id, qs: {page: parseInt(page)-1} })}}>ANTERIOR</a> 
+      @else
+
+       <a class="btn btn-outline-dark disabled">ANTERIOR</a> 
+      @endif
+    
+      @if(page < max)
+
+       <a class="btn btn-outline-dark" href={{ route('rifas.show',{rifa_id:rifa.id, qs: {page: parseInt(page)+1} })}}>PRÓXIMA</a> 
+      @else 
+
+       <a class="btn btn-outline-dark disabled">PRÓXIMA</a> 
+      @endif
+     
+         
+          
+         
+        
+      
     </ul>
 
 

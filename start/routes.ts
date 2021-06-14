@@ -21,6 +21,11 @@ Route.group(() => {
   Route.get('/usuario/status', 'UsuarioController.status').as('usuario.status')
   Route.get('/usuario/status/:rifa_id/show', 'UsuarioController.show').as('usuario.status.show')
 
+  Route.get('/usuario/minhasRifas', 'UsuarioController.minhas').as('usuario.minhasRifas')
+
+  Route.get('/rifas/:rifa_id/sortear', 'RifasController.sortear').as('rifas.sortear')
+
+
 }).middleware('auth')
 
 Route.get('/register', 'AuthController.register').as('auth.register')

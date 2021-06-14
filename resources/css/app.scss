@@ -11,7 +11,8 @@ body {
 }
 
 p{
-  color: aliceblue;
+  font-style: italic;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .btn-space {
@@ -20,41 +21,23 @@ p{
 
 .body-home {
 
-  background-image: url(https://cdn.motor1.com/images/mgl/LwWLW/s1/vw-gol-gti-1992.jpg);
+  background-image: url(https://www.pixel4k.com/wp-content/uploads/2019/03/abstract-minimal-blur-4k_1551646032.jpg);
   background-repeat: no-repeat;
   background-size: cover;
-
+  
 }
 
-.link-home {
-    width: 300px;
-    height: 70px;
-
-    position: absolute;
-    top: 50%;
-    left: 50%;
-
-    margin: -70px 0 0 -170px;
-    text-align: center;
-    font-size: 1.3em;  
-    background: rgba($color: #000000, $alpha: 0.5);
-    color: whitesmoke;
-    padding: 1em;
-    border-radius: 0.5em;
-    
-    
-
-}
 
 .link-home a{
-    color: yellowgreen;
-    transition: 2s;
-    text-decoration: none;
+    
+  color: rgb(145, 255, 1);
+  transition: 2s;
+  text-decoration: none;
 
 }
 
 .link-home a:hover{
-    color: white;
+    color: rgb(19, 100, 30);
     text-shadow: white;
 
 }
@@ -84,18 +67,18 @@ p{
 
 .mostrar-rifa{
 
-  background-color: rgba($color: rgb(243, 122, 41), $alpha: 0.75);
+  background-color: rgba($color: rgb(255, 255, 255), $alpha: 1);
   padding: 1em;
   border-radius: 0.5em;
   font-family: DejaVu Sans Mono, monospace ;
-  width: max-content;  
+  width: 600px;  
   float: left;
 
 }
 
 .mostar-bilhete{
   
-  background-color: rgba($color: rgb(243, 122, 41), $alpha: 0.75);
+  background-color: rgba($color: #feffff, $alpha: 1);
   padding: 1em;
   border-radius: 0.5em;
   font-family: DejaVu Sans Mono, monospace ;
@@ -103,4 +86,39 @@ p{
   float: right;
 
 
+}
+
+.paginacao{
+  list-style: none;
+  height:380px;
+  width:500px;
+  overflow-y:auto;
+  padding:5px;
+
+}
+
+.paginacao-item{
+  height:35px;
+  margin-bottom:5px;
+  width:100%;
+
+}
+
+.paginacao .paginacao-item:nth-child(n+101){
+  display: none;
+}
+
+.show-status{
+  padding: 1em;
+  font-family: DejaVu Sans Mono, monospace ;
+  font-size: xx-large;
+  width: 100%;
+  height: 500px;  
+  float: right;
+  background: rgba($color: #ffffff, $alpha: 1.0);
+
+}
+
+.mika{
+  width: 200px;
 }

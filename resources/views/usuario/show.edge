@@ -1,14 +1,13 @@
 @layout('layout/app')
-
 @section('content')
-  <h1></h1>
-  <ul>
-    <p>Quantidade de bilhetes comprados: {{cont}}</p>
+  
+<div class="show-status">
 
-    <p>Valor Investido:</p>
+     <a>Quantidade de bilhetes comprados: {{qtdBilheteComprado}}</a>
+     <h2>Valor Investido: R${{valorInvestido}} </h2>
+     <h2> <a href="{{ route('rifas.show', { rifa_id: id }) }}" class ="btn btn-primary"> Comprar mais rifas </a>
 
-    <p>Comprar Mais:</p>
-
-   
-  </ul>
+    
+  </div>
+  <a href="{{  route('usuario.status' )}}" class = "mika  btn btn-danger btn-space">Voltar</a>
 @endsection
