@@ -1,5 +1,6 @@
 import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import Bilhete from 'App/Models/Bilhete'
+import Premio from 'App/Models/Premio'
 import Rifa from 'App/Models/Rifa'
 
 export default class UsuariosController {

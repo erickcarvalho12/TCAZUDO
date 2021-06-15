@@ -25,6 +25,7 @@ Route.group(() => {
 
   Route.get('/rifas/:rifa_id/sortear', 'RifasController.sortear').as('rifas.sortear')
 
+  Route.get('/rifas/:rifa_id/ganhadores', 'RifasController.ganhadores').as('rifas.ganhadores')
 
 }).middleware('auth')
 

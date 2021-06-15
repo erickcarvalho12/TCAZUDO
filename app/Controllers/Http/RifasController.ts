@@ -37,7 +37,7 @@ export default class RifasController {
     if(rifa!!.dataFimVenda > DateTime.now()){
        vencida = false;
     }
-    console.log(vencida)
+    //console.log(vencida)
     const max = Math.ceil(bilhetesTamanho.quantidadeBilhetes / 100)
 
     return view.render('rifas/show',{rifa,premios,bilhetes, page,max,vencida})
@@ -66,7 +66,7 @@ export default class RifasController {
     response.redirect().toRoute('premios.create', { rifa_id: rifa.id })
   }
 
-  public async sortear({ request, response, auth,view ,params }: HttpContextContract) {
+  public async sortear({  auth ,params ,view}: HttpContextContract) {
 
     const rifa = await auth
       .user!!.related('rifas')
@@ -76,33 +76,55 @@ export default class RifasController {
 
       const tipo = await Tipo.find(rifa.tipoId) 
 
-      console.log('numero maximo:',tipo?.quantidadeBilhetes,' ') 
+     // console.log('numero maximo:',tipo?.quantidadeBilhetes,' ') 
 
       const  bilhetes = await Bilhete
       .query()
       .where('bilhetes.rifa_id', rifa.id)
 
-      let rifaComprada = false
+      let rifaSorteada = false
 
-      do {
-        const idBilheteSorteado = Math.floor(Math.random() * (tipo!!.quantidadeBilhetes - 1) + 1)
-        console.log('id sorteado:',idBilheteSorteado,' ')
-        let cont= 0;
-        for (const bilhete of bilhetes) {
-          cont++
-          if(cont === idBilheteSorteado  ){
-           console.log('numero do bilhete sorteado: ',bilhete.numero)
-            console.log('id do bilhete sorteado: ',bilhete.id)
-            if( bilhete.usuarioId){
-              rifaComprada = true
-              console.log('o id do vencedor é:',bilhete.usuarioId)
+      const  premios = await Premio.query()
+      .where('premios.rifa_id', rifa.id)
+      let quantidadeDePremios = 0;
+      let jaSorteado = 0;
+      for (const premio of premios) {
+        quantidadeDePremios++
+         jaSorteado = premio.bilheteSorteadoId;
+      }
+      if(!jaSorteado){
+        //console.log('contador de premio:',premios )
+        let quantidadePremiosSorteados=0
+        do {
+          const idBilheteSorteado = Math.floor(Math.random() * (tipo!!.quantidadeBilhetes - 1) + 1)
+          //console.log('id sorteado:',idBilheteSorteado,' ')
+          let cont= 0;
+          for (const bilhete of bilhetes) {
+            cont++
+            if(cont === idBilheteSorteado  ){
+              //console.log('numero do bilhete sorteado: ',bilhete.numero)
+              //console.log('id do bilhete sorteado: ',bilhete.id)
+              if( bilhete.usuarioId  ){
+                if(quantidadePremiosSorteados <= quantidadeDePremios){
+                  quantidadePremiosSorteados++
+                  await Premio.query().where('rifa_id', rifa.id).where('colocacao', quantidadePremiosSorteados).update({ bilhete_sorteado_id: bilhete.id })
+                }
+                else{
+                  rifaSorteada = true
+                }        
+              }
             }
           }
-        }
-        console.log(cont)
-      } while(!rifaComprada);
-
-    response.redirect().toRoute('root')
+          //console.log(cont)
+        } while(!rifaSorteada)
+      }
+      const premioss = await rifa
+      .related('premios')
+      .query()
+      .preload('bilheteSorteado', (bilheteQuery) => {
+        bilheteQuery.preload('usuario')
+      })
+    return view.render('rifas/ganhadores', { rifa_id: params.rifa_id, premioss })
   }
 
-}
+} 

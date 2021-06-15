@@ -1,6 +1,7 @@
 @layout('layout/app')
 @section('content')
 
+  <div>
   <ul class="list-group">
     @each(rifa in rifas)
       <li class="list-group-item list-group-item-light d-flex justify-content-between">
@@ -15,5 +16,6 @@
       </li>
     @endeach
   </ul>
+  </div>
    <a href="{{ route('root') }}" class = "btn btn-danger btn-lg ">Voltar</a>
 @endsection

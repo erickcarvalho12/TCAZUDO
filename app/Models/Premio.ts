@@ -28,6 +28,8 @@ export default class Premio extends BaseModel {
   @belongsTo(()=> Rifa)
   public rifa: BelongsTo<typeof Rifa>
 
-  @belongsTo(()=> Bilhete)
-  public bilhete: BelongsTo<typeof Bilhete>
+  @belongsTo(()=> Bilhete, {
+    foreignKey: 'bilheteSorteadoId',
+  })
+  public bilheteSorteado: BelongsTo<typeof Bilhete>
 }

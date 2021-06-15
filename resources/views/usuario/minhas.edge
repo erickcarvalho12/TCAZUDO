@@ -10,11 +10,14 @@
       </div>  
       <div class="d-flex justify-content-between">
         <a href="{{ route('rifas.show', { rifa_id: rifa.id , qs: { page:1 }}) }} " class ="btn btn-outline-primary btn-space" style=""> VISUALIZAR</a>
-        <a class="btn btn-outline-dark"href="{{ route('rifas.sortear', { rifa_id: rifa.id }) }}">Sortear</a>
+      
+        <a class="btn btn-outline-dark btn-space"href="{{ route('rifas.sortear', { rifa_id: rifa.id }) }}">Sortear</a>
     </div>
    
       </li>
     @endeach
   </ul>
+
    <a href="{{ route('root') }}" class = "btn btn-danger btn-lg ">Voltar</a>
+  </div>
 @endsection
